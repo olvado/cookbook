@@ -13,8 +13,8 @@
   },
   "scripts": {
     "modernizr": "browserify app/assets/javascripts/browsernizr.js -o app/assets/javascripts/modernizr.js",
-    "build": "browserify app/assets/javascripts/initializer.js -o app/assets/javascripts/application.js",
-    "watch": "watchify app/assets/javascripts/initializer.js -o app/assets/javascripts/application.js",
+    "build": "browserify app/assets/javascripts/app.js -o app/assets/javascripts/application.js",
+    "watch": "watchify app/assets/javascripts/app.js -o app/assets/javascripts/application.js",
     "start": "npm run watch & npm run modernizr & rails server"
   }
 }

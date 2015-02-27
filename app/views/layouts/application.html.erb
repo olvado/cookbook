@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
   <title>Cookbook</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'modernizr' %>
 </head>
-<body>
 
-<%= yield %>
+<%= content_tag :body, data: { module: controller_name, action: action_name } do %>
+<section class="app">
+  <header class="app-header">
+    <%= link_to "Cookbook", root_path, class: "app-header_title" %>
+    <nav class="app-header_nav">
+      <%= link_to @current_user, @current_user %>
+    </nav>
+  </header>
+  <section class="app-content">
+    <%= yield %>
+  </section>
+  <footer class="app-footer">
+  </footer>
+</section>
+  <%= javascript_include_tag 'application' %>
+<% end %>
 
-</body>
 </html>
