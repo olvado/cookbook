@@ -1,0 +1,8 @@
+{
+  "name": "cookbook",
+  "version": "0.0.0",
+  "dependencies": {
+    "css-patterns": "*",
+    "normalize-css": "~3.0.2"
+  }
+}
