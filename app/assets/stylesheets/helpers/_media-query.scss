@@ -1,0 +1,6 @@
+
+@mixin media-query(query) {
+  @media #{$media-query} {
+    @content;
+  }
+}
