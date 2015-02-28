@@ -6,6 +6,7 @@ gem 'pg'
 gem 'figaro'
 gem 'friendly_id', '~> 5.1.0'
 gem 'draper', '~> 1.3'
+gem 'simple_form'
 
 gem 'bourbon'
 gem 'sass-rails', '~> 5.0'

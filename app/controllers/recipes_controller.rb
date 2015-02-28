@@ -9,9 +9,14 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = Recipe.new(user_id: @current_user.id)
   end
 
   def edit
   end
+
+protected
+
+  def permitted_params
+
 end
