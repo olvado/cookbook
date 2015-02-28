@@ -1,4 +1,6 @@
 <%= simple_form_for [@current_user, @recipe] do |f| %>
+  <%= f.error_notification %>
+  
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.button :submit %>
