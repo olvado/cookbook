@@ -1,0 +1,7 @@
+<h1><%= @recipe %></h1>
+<dl>
+  <dt>Author</dt>
+  <dd><%= link_to @recipe.user, @recipe.user %></dd>
+  <dt>Created</dt>
+  <dd><%= @recipe.created_at %></dd>
+</dl>

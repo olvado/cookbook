@@ -1,0 +1,17 @@
+<article>
+  <header>
+    <h1><%= @user %></h1>
+  </header>
+  <section>
+    <h2>Recipes</h2>
+    <ul>
+      <%= render @user.recipes %>
+    </ul>
+  </section>
+  <section>
+    <h2>Favourites</h2>
+    <ul>
+      <%= render @user.favourites %>
+    </ul>
+  </section>
+</article>
