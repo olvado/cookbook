@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :recipes
 
+  has_many :favourite_recipes
+  has_many :favourites, through: :favourite_recipes, source: :recipe
+
   def to_s
     username
   end

@@ -4,6 +4,9 @@ class Recipe < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :favourite_recipes
+  has_many :favourited_by, through: :favourite_recipes, source: :user
+
   def to_s
     title
   end
