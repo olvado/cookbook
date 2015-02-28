@@ -1,1 +1,7 @@
-<li><%= link_to recipe, recipe %></li>
+<li class="list-item list-item">
+  <h3><%= link_to recipe, recipe %></h3>
+  <section class=""
+    <%= link_to recipe.user, recipe.user %> 
+    <%= "#{recipe.favourite_count} #{"favourite".pluralize(recipe.favourite_count)}" %>
+  </p>
+</li>
