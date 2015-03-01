@@ -7,6 +7,7 @@ gem 'figaro'
 gem 'friendly_id', '~> 5.1.0'
 gem 'draper', '~> 1.3'
 gem 'simple_form'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'bourbon'
 gem 'sass-rails', '~> 5.0'

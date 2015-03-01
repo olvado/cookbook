@@ -3,5 +3,6 @@
   <section class="m-recipe-meta">
     <%= "#{recipe.favourite_count} fav".pluralize(recipe.favourite_count) %> 
     <%= link_to recipe.user, recipe.user %>
-  </p>
+    <%= render 'recipes/ingredient_list', ingredient_list: recipe.ingredient_list if recipe %>
+  </section>
 </li>

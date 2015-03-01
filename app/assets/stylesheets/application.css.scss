@@ -1,6 +1,11 @@
 @import "bourbon";
 @import "normalize-css/normalize";
+@import "css-patterns/stylesheets/patterns";
 
 @import "variables";
 @import "typography";
 @import "layout";
+
+@import "modules/recipes";
+@import "modules/users";
+@import "modules/tags";

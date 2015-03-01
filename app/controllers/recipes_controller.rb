@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   def index
     @author = User.find(params[:user_id]).decroate unless params[:user_id].nil?
-    @recipes = RecipeDecorator.decorate_collection(@author.nil? ? Recipe.all : @author.recipes.decorate)
+    @recipes = @author.nil? ? Recipe.all.decorate : @author.recipes.decorate
   end
 
   def show
@@ -38,9 +38,8 @@ protected
 
   def permitted_params
     params.require(:recipe).permit(
-        :title,
-        :body,
-        :user_id
+        :title, :body, :user_id,
+        :ingredient_list
       )
   end
 

@@ -1,0 +1,12 @@
+
+.tags,
+.ingredients {
+  @include unstyled-list;
+  li {
+    display: inline-block;
+    background: $grey-pale;
+    border-radius: 3px;
+    line-height: 1.37;
+    padding: 0 0.33em;
+  }
+}
