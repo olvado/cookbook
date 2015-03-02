@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+
   def index
     @author = User.find(params[:user_id]).decroate unless params[:user_id].nil?
     @recipes = @author.nil? ? Recipe.all.decorate : @author.recipes.decorate
@@ -31,6 +32,22 @@ class RecipesController < ApplicationController
       redirect_to @current_user, notice: "Recipe created."
     else
       render :new
+    end
+  end
+
+  def favourite
+    @recipe = Recipe.find(params[:id])
+    if !@current_user.favourites.include?(@recipe)
+      @current_user.favourites << @recipe
+      action = "added"
+    else
+      @current_user.favourites.destroy(@recipe)
+      action = "removed"
+    end
+
+    respond_to do |format|
+      format.json { render json: @recipe.reload.to_json }
+      format.html { redirect_to :back, notice: "Recipe #{action} from favourites." }
     end
   end
 

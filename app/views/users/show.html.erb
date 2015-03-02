@@ -4,10 +4,10 @@
   </header>
   <section>
     <h2>Recipes</h2>
-    <%= render 'list', collection: @user.recipes %>
+    <%= render 'list', collection: @user.recipes.decorate %>
   </section>
   <section>
     <h2>Favourites</h2>
-    <%= render 'list', collection: @user.favourites %>
+    <%= render 'list', collection: @user.favourites.decorate %>
   </section>
 </article>

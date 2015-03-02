@@ -1,7 +1,10 @@
 <li class="list-item list-item--recipe">
   <h3><%= link_to recipe, recipe %></h3>
   <section class="m-recipe-meta">
-    <%= "#{recipe.favourite_count} fav".pluralize(recipe.favourite_count) %> 
+    <%= form_tag(favourite_user_recipe_path(@current_user, recipe), class: "js-favourite#{recipe.favourited_class(@current_user)}", remote: true) do %>
+      <span class="favourite-count js-favourite_count"><%= recipe.favourite_count %></span> 
+      <%= submit_tag("#{@current_user.favourites.include?(recipe) ? "Remove" : "Add"} favourite") %>
+    <% end %>
     <%= link_to recipe.user, recipe.user %>
     <%= render 'recipes/ingredient_list', ingredient_list: recipe.ingredient_list if recipe %>
   </section>
