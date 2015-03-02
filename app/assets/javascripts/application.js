@@ -5,21 +5,23 @@ var $ = require('jquery');
 var BigBird = require('bigbird');
 
 // BigBird Nodules
-var Favourite   = require('./modules/favourite');
+var Notifier  = require('./modules/notifier');
+var Favourite = require('./modules/favourite');
 
 // BigBird Initializer
 var initializer = new BigBird.Initializer({
   modules: {
     common: {
       initialize: function initializeAction() {
-        var favourite = new Favourite();
+        var notifier = new Notifier(),
+            favourite = new Favourite();
       }
     }
   }
 });
 
 
-},{"./modules/favourite":"/Users/olvado/www/olvado/cookbook/app/assets/javascripts/modules/favourite.js","bigbird":"/Users/olvado/www/olvado/cookbook/node_modules/bigbird/bigbird.js","jquery":"/Users/olvado/www/olvado/cookbook/node_modules/jquery/dist/jquery.js"}],"/Users/olvado/www/olvado/cookbook/app/assets/javascripts/modules/favourite.js":[function(require,module,exports){
+},{"./modules/favourite":"/Users/olvado/www/olvado/cookbook/app/assets/javascripts/modules/favourite.js","./modules/notifier":"/Users/olvado/www/olvado/cookbook/app/assets/javascripts/modules/notifier.js","bigbird":"/Users/olvado/www/olvado/cookbook/node_modules/bigbird/bigbird.js","jquery":"/Users/olvado/www/olvado/cookbook/node_modules/jquery/dist/jquery.js"}],"/Users/olvado/www/olvado/cookbook/app/assets/javascripts/modules/favourite.js":[function(require,module,exports){
 "use strict";
 
 var $ = require("jquery");
@@ -36,9 +38,12 @@ module.exports = BigBird.Module.extend({
   onFormSubmit: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    var $form  = $(e.currentTarget),
+    var fav = this,
+        $form  = $(e.currentTarget),
         button = $('input[type=submit]', $form),
-        count  = $(".js-favourite_count", $form);
+        count  = $(".js-favourite_count", $form),
+        button_text = "",
+        message = "";
 
     $.ajax({
       url: $form.attr("action"),
@@ -46,11 +51,46 @@ module.exports = BigBird.Module.extend({
       data: $form.serialize(),
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       success: function(response) {
+        
         count.text(response.favourite_count);
         $form.toggleClass("is_active");
-        button.val($form.hasClass("is_active") ? "Remove favourite" : "Add favourite" );
+
+        if ($form.hasClass("is_active")) {
+          button_text =  "Remove favourite";
+          message = "Recipe favourited";
+        } else {
+          button_text =  "Add favourite";
+          message = "Favourite removed";
+        }
+
+        button.val(button_text);
+        fav.publish("notifier:send", message);
       }
     });
+  }
+
+});
+
+},{"bigbird":"/Users/olvado/www/olvado/cookbook/node_modules/bigbird/bigbird.js","jquery":"/Users/olvado/www/olvado/cookbook/node_modules/jquery/dist/jquery.js"}],"/Users/olvado/www/olvado/cookbook/app/assets/javascripts/modules/notifier.js":[function(require,module,exports){
+"use strict";
+
+var $ = require("jquery");
+var BigBird = require("bigbird");
+
+module.exports = BigBird.Module.extend({
+
+  el: $('.notifier'),
+
+  subscriptions: {
+    "notifier:send": "sendMessage"
+  },
+
+  template: function(message) {
+    return $('<p>', {class: "notifier-message", text: message});
+  },
+
+  sendMessage: function(message) {
+    this.$el.html(this.template(message));
   }
 
 });

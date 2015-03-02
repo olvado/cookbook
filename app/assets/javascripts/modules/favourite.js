@@ -14,9 +14,12 @@ module.exports = BigBird.Module.extend({
   onFormSubmit: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    var $form  = $(e.currentTarget),
+    var fav = this,
+        $form  = $(e.currentTarget),
         button = $('input[type=submit]', $form),
-        count  = $(".js-favourite_count", $form);
+        count  = $(".js-favourite_count", $form),
+        button_text = "",
+        message = "";
 
     $.ajax({
       url: $form.attr("action"),
@@ -24,9 +27,20 @@ module.exports = BigBird.Module.extend({
       data: $form.serialize(),
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       success: function(response) {
+        
         count.text(response.favourite_count);
         $form.toggleClass("is_active");
-        button.val($form.hasClass("is_active") ? "Remove favourite" : "Add favourite" );
+
+        if ($form.hasClass("is_active")) {
+          button_text =  "Remove favourite";
+          message = "Recipe favourited";
+        } else {
+          button_text =  "Add favourite";
+          message = "Favourite removed";
+        }
+
+        button.val(button_text);
+        fav.publish("notifier:send", message);
       }
     });
   }
