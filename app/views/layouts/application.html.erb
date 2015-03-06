@@ -2,22 +2,29 @@
 <html class="no-js">
 <head>
   <title>Cookbook</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
   <%= javascript_include_tag 'modernizr' %>
+  <%= render 'layouts/typekit' %>
 </head>
 
 <%= content_tag :body, data: { module: controller_name, action: action_name } do %>
 <section class="app">
+  <div class="app-notifier js-notifier"></div>
   <header class="app-header">
-    <div class="notifier"></div>
-    <%= link_to "Cookbook", root_path, class: "app-header_title" %>
-    <nav class="app-header_nav">
-      <%= link_to "Recipes", root_path %> 
-      <%= link_to "Users", users_path %> 
-      <%= link_to @current_user, @current_user %>
-    </nav>
+    <div class="app-header_title l-wrap">
+      <%= link_to "Cookbook", root_path, class: "app-header_title-link" %>
+    </div>
+    <%= button_tag class: "app-header_nav-menu js-menu" do %>
+      <span>Menu</span>
+    <% end %>
   </header>
+  <nav class="app-header_nav nav">
+    <%= link_to @current_user, @current_user, class: "nav-item" %> 
+    <%= link_to "Recipes", root_path, class: "nav-item" %> 
+    <%= link_to "Users", users_path, class: "nav-item" %> 
+  </nav>
   <section class="app-content">
     <%= yield %>
   </section>

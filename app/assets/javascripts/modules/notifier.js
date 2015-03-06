@@ -5,7 +5,7 @@ var BigBird = require("bigbird");
 
 module.exports = BigBird.Module.extend({
 
-  el: $('.notifier'),
+  el: $('.js-notifier'),
 
   subscriptions: {
     "notifier:send": "sendMessage"

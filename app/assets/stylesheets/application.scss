@@ -4,8 +4,10 @@
 
 @import "variables";
 @import "typography";
-@import "layout";
+@import "app-layout";
 
 @import "modules/recipes";
 @import "modules/users";
 @import "modules/tags";
+@import "modules/recipes";
+@import "modules/page";

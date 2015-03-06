@@ -1,0 +1,20 @@
+
+.page-header {
+  background: $blue-mid;
+  overflow: hidden;
+  padding-top: 1em;
+  color: $blue-white;
+}
+
+.page-header_title-count {
+  font-size: 0.4em;
+  font-weight: normal;
+  display: inline-block;
+  background: $blue-pale;
+  padding: 0.35em 0.5em;
+  height: 1em;
+  min-width: 1em;
+  text-align: center;
+  border-radius: 1em;
+  vertical-align: top;
+}

@@ -4,10 +4,10 @@
   </header>
   <section>
     <h2>Recipes</h2>
-    <%= render 'list', collection: @user.recipes.decorate %>
+    <%= render 'recipes_list', recipes: @user.recipes.decorate %>
   </section>
   <section>
     <h2>Favourites</h2>
-    <%= render 'list', collection: @user.favourites.decorate %>
+    <%= render 'recipes_list', recipes: @user.favourites.decorate, opts: { data: {bb_el: "favourites-list"} } %>
   </section>
 </article>

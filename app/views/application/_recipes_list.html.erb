@@ -1,0 +1,12 @@
+<% 
+  options = { class: "list list--recipes" }
+  options = options.merge(opts) if defined?(opts)
+%>
+
+<%= content_tag :ul, options do %>
+  <% recipes.each do |recipe| %>
+    <li class="list-item list-item--recipe" data-recipe-id="<%= recipe %>">
+      <%= render recipe %>
+    </li>
+  <% end %>
+<% end %>

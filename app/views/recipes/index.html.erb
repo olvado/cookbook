@@ -1,2 +1,19 @@
-<h1>Recipes</h1>
-<%= render 'list', collection: @recipes %>
+<article class="recipes page">
+  <header class="page-header">
+    <div class="l-wrap">
+      <h1 class="page-header_title">
+        Recipes 
+        <span class="page-header_title-count">
+          <%= @recipes.length %>
+        </span>
+      </h1>
+    </div>
+  </header>
+  <section class="page-features">
+    <%= render @recipes.shift %>
+    <%= render @recipes.shift %>
+  </section>
+  <section class="page-content">
+    <%= render 'recipes_list', recipes: @recipes %>
+  </section>
+</article>

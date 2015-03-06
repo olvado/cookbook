@@ -1,0 +1,85 @@
+$header-height: 45px;
+
+html, body {
+  height: 100%;
+}
+
+.l-wrap {
+  padding: 0 1em;
+}
+
+.app {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  overflow: hidden;
+}
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0; right: 0;
+  background: $blue-dark;
+  color: $blue-pale;
+  height: 45px;
+}
+
+.app-header_title {
+  display: block;
+  @include title;
+  color: $blue-white;
+  margin-left: 2.5em;
+  a {
+    display: inline-block;
+    @include unstyled-anchor;
+    font-size: 24px;
+    line-height: 45px;
+  }
+}
+
+.app-header_nav {
+  display: none;
+}
+
+.nav-item {
+  @include unstyled-anchor;
+}
+
+.app-header_nav-menu {
+  $border: 1px;
+  $height: 17px;
+  $width: 28px;
+
+  border-radius: 3px;
+
+  position: absolute;
+  left: 1em;
+  top: 14px;
+  display: block;
+
+  text-indent: -1000em;
+  line-height: 100em;
+  padding: 0;
+  width: $width;
+  height: $height;
+  border: 0;
+  border-top: $border solid #fff;
+  border-bottom: $border solid #fff;
+  background: transparent;
+  &:before {
+    content: "";
+    border-top: $border solid #fff;
+    display: block;
+    margin-top: ($height / 2) - 1.5px;
+  }
+}
+
+.app-content {
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  left: 0; right: 0;
+  overflow: auto;
+}
+
+

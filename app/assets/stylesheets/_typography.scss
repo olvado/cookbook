@@ -1,0 +1,26 @@
+@mixin faricy($weight: 400) {
+  @if $weight == "bold" {
+    $weight: 700;
+  }
+  @if $weight == "light" {
+    $weight: 300;
+  }
+  font-family: "faricy-new-web";
+  font-weight: $weight;
+}
+
+@mixin title {
+  @include faricy("light");
+  text-transform: uppercase;
+}
+
+body {
+  @include faricy;
+}
+
+h1, h2 {
+  @include title;
+}
+h3, h4, h5 {
+  font-weight: normal;
+}

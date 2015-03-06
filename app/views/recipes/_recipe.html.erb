@@ -1,4 +1,4 @@
-<li class="list-item list-item--recipe">
+<article class="recipe">
   <h3><%= link_to recipe, recipe %></h3>
   <section class="m-recipe-meta">
     <%= form_tag(favourite_user_recipe_path(@current_user, recipe), class: "js-favourite#{recipe.favourited_class(@current_user)}", remote: true) do %>
@@ -6,6 +6,6 @@
       <%= submit_tag("#{@current_user.favourites.include?(recipe) ? "Remove" : "Add"} favourite") %>
     <% end %>
     <%= link_to recipe.user, recipe.user %>
-    <%= render 'recipes/ingredient_list', ingredient_list: recipe.ingredient_list if recipe %>
+    <%= render 'recipes/ingredient_list', ingredient_list: recipe.ingredient_list if recipe.ingredient_list.any? %>
   </section>
-</li>
+</article>
