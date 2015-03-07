@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:index, :show]
 
-  resources :users, except: [:new] do
+  resources :users, except: [:new], path: :cooks do
     get :favourites, to: "users#favourites"
     resources :recipes do
       post :favourite, on: :member

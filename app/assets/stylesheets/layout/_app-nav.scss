@@ -6,6 +6,11 @@
   left: 0;
   width: 200px;
   background: $grey-dark;
+  opacity: 0;
+  @include transition(opacity 0.2s ease-in-out);
+  .nav_is_open & {
+    opacity: 1;
+  }
 }
 
 .nav-item {
