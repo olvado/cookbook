@@ -1,0 +1,6 @@
+<%= form_tag(favourite_user_recipe_path(@current_user, recipe), class: "favourite js-favourite#{recipe.favourited_class(@current_user)}", remote: true) do %>
+  <%= button_tag class: "favourite-button" do %>
+    <%= content_tag :span, "#{@current_user.favourites.include?(recipe) ? "Remove" : "Add"} favourite" %>
+  <% end %>
+  <span class="favourite-count js-favourite_count"><%= recipe.favourite_count %></span> 
+<% end %>

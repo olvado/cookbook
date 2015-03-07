@@ -9,11 +9,11 @@
       </h1>
     </div>
   </header>
-  <section class="page-features">
-    <%= render @recipes.shift %>
-    <%= render @recipes.shift %>
+  <section class="page-features l-wrap">
+    <%= render @recipes.shift if @recipes.any? %>
+    <%= render @recipes.shift if @recipes.any? %>
   </section>
-  <section class="page-content">
+  <section class="page-content l-wrap">
     <%= render 'recipes_list', recipes: @recipes %>
   </section>
 </article>

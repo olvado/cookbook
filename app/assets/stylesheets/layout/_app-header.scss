@@ -1,0 +1,24 @@
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0; right: 0;
+  z-index: 100;
+  background: $blue-dark;
+  color: $blue-pale;
+  border-bottom: 3px solid $blue-mid;
+  height: 45px;
+}
+
+.app-header_title {
+  display: block;
+  @include title;
+  color: $blue-white;
+  margin-left: 2.5em;
+  a {
+    display: inline-block;
+    @include unstyled-anchor;
+    font-size: 24px;
+    line-height: 45px;
+  }
+}

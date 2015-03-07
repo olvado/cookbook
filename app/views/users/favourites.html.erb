@@ -1,0 +1,13 @@
+<article class="user-favourites page">
+  <header class="page-header">
+    <div class="l-wrap">
+      <h1 class="page-header_title">
+        <%= @current_user %>
+      </h1>
+    </div>
+  </header>
+  <section class="page-content l-wrap">
+    <h2>Favourites</h2>
+    <%= render 'recipes_list', recipes: @current_user.favourites.decorate %>
+  </section>
+</article>

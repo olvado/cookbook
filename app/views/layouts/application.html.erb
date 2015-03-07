@@ -20,16 +20,26 @@
       <span>Menu</span>
     <% end %>
   </header>
-  <nav class="app-header_nav nav">
-    <%= link_to @current_user, @current_user, class: "nav-item" %> 
-    <%= link_to "Recipes", root_path, class: "nav-item" %> 
-    <%= link_to "Users", users_path, class: "nav-item" %> 
+  <nav class="app-header_nav nav" bb-el="navigation">
+    <section class="nav-section nav-section_main">
+      <%= link_to "Recipes", root_path, class: "nav-item #{active_path(root_path)}" %> 
+      <%= link_to "Users", users_path,  class: "nav-item #{active_path(users_path)}"  %> 
+    </section>
+    <section class="nav-section nav-section_user">
+      <%= link_to @current_user, @current_user, class: "nav-item nav-item_head #{active_path(@current_user)}" %> 
+      <%= link_to user_recipes_path(@current_user), class: "nav-item #{active_path(user_recipes_path(@current_user))}" do %> 
+        Recipes 
+        <span class="count"><%= @current_user.recipes.length %></span>
+      <% end %>
+      <%= link_to user_favourites_path(@current_user), class: "nav-item #{active_path(user_favourites_path(@current_user))}" do %>
+        Favourites
+        <span class="count"><%= @current_user.favourites.length %></span>
+      <% end %>
+    </section>
   </nav>
   <section class="app-content">
     <%= yield %>
   </section>
-  <footer class="app-footer">
-  </footer>
 </section>
   <%= javascript_include_tag 'application' %>
 <% end %>

@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
   def index
-    @author = User.find(params[:user_id]).decroate unless params[:user_id].nil?
+    @author = User.find(params[:user_id]).decorate unless params[:user_id].nil?
     @recipes = @author.nil? ? Recipe.all.decorate : @author.recipes.decorate
   end
 

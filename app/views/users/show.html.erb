@@ -1,13 +1,13 @@
-<article>
-  <header>
-    <h1><%= @user %></h1>
+<article class="user page">
+  <header class="page-header">
+    <div class="l-wrap">
+      <h1 class="page-header_title">
+        <%= @user %>
+      </h1>
+    </div>
   </header>
-  <section>
-    <h2>Recipes</h2>
+  <section class="page-content l-wrap">
     <%= render 'recipes_list', recipes: @user.recipes.decorate %>
-  </section>
-  <section>
-    <h2>Favourites</h2>
     <%= render 'recipes_list', recipes: @user.favourites.decorate, opts: { data: {bb_el: "favourites-list"} } %>
   </section>
 </article>

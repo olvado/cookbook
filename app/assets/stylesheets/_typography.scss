@@ -9,13 +9,30 @@
   font-weight: $weight;
 }
 
-@mixin title {
+@mixin caps {
   @include faricy("light");
   text-transform: uppercase;
 }
 
+@mixin small-caps {
+  @include caps;
+  font-size: 0.865em;
+}
+
+@mixin title {
+  @include caps;
+}
+
 body {
   @include faricy;
+}
+
+.wf-loading {
+    visibility: hidden; 
+}
+.wf-active,
+.wf-inactive {
+  visibility: visible;
 }
 
 h1, h2 {

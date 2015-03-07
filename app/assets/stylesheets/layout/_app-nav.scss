@@ -1,0 +1,74 @@
+
+.app-header_nav {
+  display: block;
+  position: fixed;
+  top: $header-height + 3px; bottom: 0;
+  left: 0;
+  width: 200px;
+  background: $grey-dark;
+}
+
+.nav-item {
+  position: relative;
+  @include unstyled-anchor;
+  display:block;
+  font-size: 0.865em;
+  padding: 0 10px;
+  line-height: 2.4;
+  color: $grey-mid;
+  border-radius: 3px;
+  @include caps;
+  margin: 5px;
+  &.is_active {
+    background: black;
+    color: $grey-pale;
+  }
+  &.nav-item_head {
+    margin: 0;
+    background: shade($grey-dark, 30);
+    padding-left: 15px;
+  }
+  .count {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: $grey-opaque;
+    line-height: 1.37;
+    padding: 0 5px;
+    color: $grey-pale;
+    font-size: 0.856em;
+  }
+}
+
+.app-header_nav-menu {
+  $border: 1px;
+  $height: 17px;
+  $width: 28px;
+
+  border-radius: 3px;
+
+  position: absolute;
+  left: 1em;
+  top: 14px;
+  display: block;
+
+  text-indent: -1000em;
+  line-height: 100em;
+  padding: 0;
+  width: $width;
+  height: $height;
+  border: 0;
+  border-top: $border solid #fff;
+  border-bottom: $border solid #fff;
+  background: transparent;
+  &:before {
+    content: "";
+    border-top: $border solid #fff;
+    display: block;
+    margin-top: ($height / 2) - 1.5px;
+  }
+  &:focus{
+    outline: none;
+  }
+}

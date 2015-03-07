@@ -1,0 +1,29 @@
+$header-height: 45px;
+
+html, body {
+  height: 100%;
+}
+
+.l-wrap {
+  padding: 0 1em;
+}
+
+.app {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  overflow: hidden;
+}
+
+.app-content {
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  left: 0; right: 0;
+  overflow: auto;
+  background: #fff;
+  box-shadow: -3px 0px 6px 0 rgba(0, 0, 0, 0.3);
+  @include nav-is-open;
+}
+
+

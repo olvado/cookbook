@@ -1,0 +1,7 @@
+
+@mixin nav-is-open {
+  @include transition(all 0.2s ease-in-out);
+  .nav_is_open & {
+    transform: translateX(200px);
+  }
+}
